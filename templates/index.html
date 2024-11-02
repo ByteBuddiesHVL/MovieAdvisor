@@ -4,31 +4,40 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MovieAdvisor - Recommended Movies</title>
-    <link href="../static/output.css" rel="stylesheet">
+    <link href="../static/style.css" rel="stylesheet">
 </head>
-<body class="bg-purple-200 h-screen">
-    <header class="fixed-top w-screen flex flex-row justify-between px-4 py-2">
-        <h1 class="text-3xl text-purple-950 font-semibold">MovieAdvisor</h1>
-        <div class="flex flex-row gap-4 self-center">
-            <h2 class="text-xl text-purple-900">Home</h2>
-            <h2 class="text-xl text-purple-900">About</h2>
+<body>
+    <header>
+        <h1 class="headerTitle">MovieAdvisor</h1>
+        <div class="headerPart">
+            <h2 class="headerSubtitle">Home</h2>
+            <h2 class="headerSubtitle">About</h2>
         </div>
     </header>
-    <div class="container self-center mx-auto bg-white w-[48rem] h-24 flex flex-col rounded-xl p-4 m-48">
-        <form method="post" action="/">
-            <div class="flex flex-col">
-                <p>Genres:</p>
-                <div class="flex flex-row gap-1.5">
-                    <div class="px-3 py-0.5 rounded-full bg-gray-200"><p>Action</p></div>
-                    <div class="px-3 py-0.5 rounded-full bg-gray-200"><p>War</p></div>
+    <div class="container inputContainer">
+            <div class="genreContainer">
+                <h3 class="genreTitle">Genres:</h3>
+                <div class="genreSelect">
+                    <button class="genreButton">Action</button>
+                    <button class="genreButton">War</button>
+                    <button class="genreButton">Thriller</button>
+                </div>
+                <br>
+                <h3 class="genreTitle">But not these genres:</h3>
+                <div class="genreSelect">
+                    <button class="genreButton">Fantasy</button>
                 </div>
             </div>
 
+        <form method="post" action="/process">
+            <input hidden name="wanted" value="Action,Drama,Thriller,Comedy">
+            <input hidden name="unwanted" value="Fantasy">
+            <button type="submit">Find Movies</button>
         </form>
     </div>
-    <div class="hidden container self-center mx-auto bg-white w-[48rem] h-24 flex-col rounded-xl p-4 m-4">
-        <div class="flex flex-col">
-            {{  }}
+    <div class="container resultContainer hidden">
+        <div class="">
+
         </div>
     </div>
 </body>

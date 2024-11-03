@@ -10,6 +10,10 @@ This project uses the [MovieLens 32M Dataset](https://grouplens.org/datasets/mov
 #### Citation:
 > F. Maxwell Harper and Joseph A. Konstan. 2015. The MovieLens Datasets: History and Context. ACM Transactions on Interactive Intelligent Systems (TiiS) 5, 4: 19:1–19:19. <https://doi.org/10.1145/2827872>
 
+## Usage
+You will need to get your own API key from [OMDb](https://www.omdbapi.com/apikey.aspx), once that is done. Add your API key as a system environment variable like this:
+- name: OMDB_API_KEY, value: {your api key} 
+
 ## Data Attribution
 This project uses data from the [OMDb API](https://www.omdbapi.com/), which is licensed under the [CC BY-NC 4.0 license](https://creativecommons.org/licenses/by-nc/4.0/). Data from OMDB API is used strictly for non-commercial purposes.
 

@@ -15,8 +15,12 @@ document.getElementById('form').addEventListener('submit', function(e) {
     })
         .then(response => response.json())
         .then(data => {
-            console.log([{...data.result[0], omdb: leonJson}]);
-            generateMovies([{...data.result[0], omdb: leonJson}])
+            let result = []
+            for (let item in data.result) {
+                result.push({...item, omdb: leonJson});
+            }
+            console.log(result);
+            generateMovies(result)
         })
         .catch(error => console.log('Error:', error));
 })

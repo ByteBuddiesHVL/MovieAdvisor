@@ -1,8 +1,14 @@
 from flask import Flask, render_template, request, url_for, redirect, jsonify
+import requests
 import pickle
 import pandas as pd
+from dotenv import load_dotenv
+import os
 
 app = Flask(__name__)
+
+load_dotenv()
+OMDB_API_KEY = os.getenv("OMDB_API_KEY")
 
 with open("model_31-10-24.pkl", "rb") as file:
     model = pickle.load(file)
@@ -59,6 +65,13 @@ def process_data(wanted, unwanted):
     print(top_recommendations)
 
     return top_recommendations.to_numpy()
+
+@app.route('/omdb/<imdb_id>', methods=['GET'])
+def get_omdb_api(imdb_id):
+    # Make the request to OMDB using the server-side API key
+    url = f'http://www.omdbapi.com/?apikey={OMDB_API_KEY}&i={imdb_id}'
+    omdb_response = requests.get(url)
+    return jsonify(omdb_response.json())
 
 if __name__ == '__main__':
     app.run()

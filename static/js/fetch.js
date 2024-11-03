@@ -26,7 +26,7 @@ document.getElementById('form').addEventListener('submit', function(e) {
             let promises = data.result.map(async (movie) => {
                 const imdbId = await findImdbId(movie[0]);
 
-                const omdbResponse = await fetch('http://www.omdbapi.com/?apikey=c44561d3&i=tt' + imdbId);
+                const omdbResponse = await fetch(`/omdb/tt${imdbId}`);
                 const omdbData = await omdbResponse.json();
 
                 return { ...movie, omdb: omdbData };

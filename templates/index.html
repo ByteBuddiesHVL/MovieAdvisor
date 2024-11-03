@@ -4,7 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MovieAdvisor - Recommended Movies</title>
-    <link href="../static/style.css" rel="stylesheet">
+    <link href="../static/css/style.css" rel="stylesheet">
+    <script src="../static/js/fetch.js" defer></script>
+    <script src="../static/js/update.js" defer></script>
 </head>
 <body>
     <header>
@@ -15,6 +17,7 @@
         </div>
     </header>
     <div class="container inputContainer">
+        <div>
             <div class="genreContainer">
                 <h3 class="genreTitle">Genres:</h3>
                 <div class="genreSelect">
@@ -28,16 +31,37 @@
                     <button class="genreButton">Fantasy</button>
                 </div>
             </div>
-
-        <form method="post" action="/process">
-            <input hidden name="wanted" value="Action,Drama,Thriller,Comedy">
-            <input hidden name="unwanted" value="Fantasy">
+        </div>
+        <form id="form">
+            <input hidden id="wanted" name="wanted" value="Action,Drama,Thriller,Comedy">
+            <input hidden id="unwanted" name="unwanted" value="Fantasy">
+            {{ error }}
             <button type="submit">Find Movies</button>
         </form>
     </div>
-    <div class="container resultContainer hidden">
-        <div class="">
-
+    <div class="hidden container resultContainer" id="resultContainer">
+        <div class="result resultS">
+            <img src="../static/images/the-martian.jpg" class="resImg resImgS" alt="Image poster for movie.">
+            <div class="resContent">
+                <div class="resConLeft">
+                    <h1 class="resTitle">The Martian</h1>
+                    <p class="resShortDesc">Adventure, Drama, Sci-Fi  -  2015 • PG-13 • 2h 24m</p>
+                </div>
+                <div class="resConRight resConRightS">
+                    <div class="resRatingS">
+                        <img class="resRatingImg" src="../static/images/imdb.webp" alt="IMDb">
+                        <p class="resRating"> 8.0/10</p>
+                    </div>
+                    <div class="resRatingS">
+                        <img class="resRatingImg" src="../static/images/rotten-tomatoes.webp" alt="Rotten Tomatoes">
+                        <p class="resRating"> 91%</p>
+                    </div>
+                    <div class="resRatingS">
+                        <img class="resRatingImg" src="../static/images/metacritic.webp" alt="Metacritic">
+                        <p class="resRating"> 80/100</p>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </body>

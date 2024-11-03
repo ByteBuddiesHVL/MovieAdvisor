@@ -1,0 +1,186 @@
+:root {
+    --color: rgb(59,7,100);
+    --bg: rgb(233,213,255);
+    --highlight: rgb(238, 227, 255);
+}
+
+html, body {
+    min-height: 100%;
+    margin: 0;
+    padding: 0;
+    background-color: var(--bg);
+    font-family: "Roboto Light", "Ubuntu Light", "Ubuntu", monospace;
+}
+
+h1, h2, h3, h4, h5, h6, p {
+    text-wrap: nowrap;
+}
+
+.hidden {
+    display: none;
+}
+
+header {
+    display: flex;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: calc(100% - 2rem);
+    background-color: var(--bg);
+    padding: 0 1rem;
+    justify-content: space-between;
+    flex-direction: row;
+}
+
+.headerTitle {
+    color: var(--color);
+    font-weight: 600;
+    font-size: 1.875rem;
+    line-height: 2.25rem;
+}
+
+.headerPart {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 1rem;
+}
+
+.headerSubtitle {
+    color: var(--color);
+    font-weight: 500;
+    font-size: 1.25rem;
+    line-height: 1.75rem;
+}
+
+.container {
+    display: flex;
+    width: 48rem;
+    padding: 1rem;
+    margin: auto;
+    background-color: white;
+    border-radius: 0.75rem;
+}
+
+.inputContainer {
+    margin-top: 12rem;
+}
+
+.resultContainer {
+    flex-direction: column;
+    margin-top: 1rem;
+    background-color: transparent;
+}
+
+.genreContainer {
+    display: flex;
+    flex-direction: column;
+}
+
+.genreSelect {
+    display: flex;
+    flex-direction: row;
+    gap: 0.375rem;
+}
+
+.genreTitle {
+    margin: 0 0 .25rem 0;
+    font-weight: 500;
+}
+
+.genreButton {
+    padding: 0.25rem 0.75rem;
+    background-color: rgb(229,231,235);
+    border-radius: 9999px;
+    border: 0;
+}
+
+.result {
+    display: flex;
+    flex-direction: row;
+    height: 180px;
+}
+
+.resultS {
+    height: 80px;
+}
+
+.resImg {
+    height: 100%;
+    aspect-ratio: 2 / 3;
+    border-radius: 12px;
+}
+
+.resImgS {
+    border-radius: 6px;
+}
+
+.resContent {
+    display: flex;
+    flex-direction: row;
+    background-color: white;
+    height: calc(100% - 16px - 1rem);
+    align-self: center;
+    border-top-right-radius: 12px;
+    border-bottom-right-radius: 12px;
+    gap: 1rem;
+    padding: .5rem;
+}
+
+.resConLeft {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+}
+
+.resTitle {
+    margin: 0;
+    font-size: 1.5rem;
+}
+
+.resPlot {
+    margin: 0;
+    font-size: 1rem;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-wrap: wrap;
+}
+
+.resShortDesc {
+    margin: 0;
+    font-size: .875rem;
+}
+
+.resGenres {
+    margin: 0;
+    font-size: .9rem;
+}
+
+.resConRight {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    padding: .5rem .5rem .5rem 0;
+}
+
+.resConRightS {
+    flex-direction: row;
+}
+
+.resRating {
+    margin: 0;
+}
+
+.resRatingS {
+    flex-direction: row;
+    display: flex;
+    align-items: center;
+    gap: .3rem;
+}
+
+.resRatingImg {
+    height: 100%;
+}

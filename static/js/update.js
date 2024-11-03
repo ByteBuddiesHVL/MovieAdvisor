@@ -26,8 +26,8 @@ function generateMovies(movies) {
                 </div>
                 <div class="resConRight">
                     <p class="resRating">IMDb: ${omdb.imdbRating}/10</p>
-                    <p class="resRating">Rotten Tomatoes: ${omdb.Ratings[1].Value}</p>
-                    <p class="resRating">Metacritic: ${omdb.Ratings[2].Value}</p>
+                    <p class="resRating">Rotten Tomatoes: ${omdb.Ratings[1]?.Value}</p>
+                    <p class="resRating">Metacritic: ${omdb.Ratings[2]?.Value}</p>
                 </div>
             </div>
         ` : `
@@ -44,11 +44,11 @@ function generateMovies(movies) {
                     </div>
                     <div class="resRatingS">
                         <img class="resRatingImg" src="../static/images/rotten-tomatoes.webp" alt="Rotten Tomatoes">
-                        <p class="resRating">${omdb.Ratings[1].Value}</p>
+                        <p class="resRating">${omdb.Ratings[1]?.Value}</p>
                     </div>
                     <div class="resRatingS">
                         <img class="resRatingImg" src="../static/images/metacritic.webp" alt="Metacritic">
-                        <p class="resRating">${omdb.Ratings[2].Value}</p>
+                        <p class="resRating">${omdb.Ratings[2]?.Value}</p>
                     </div>
                 </div>
             </div>

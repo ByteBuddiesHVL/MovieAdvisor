@@ -127,6 +127,7 @@ header {
     gap: 1rem;
     padding: .5rem;
     min-width: 0;
+    width: 100%;
 }
 
 .resConLeft {

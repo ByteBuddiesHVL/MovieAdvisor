@@ -11,7 +11,7 @@ This project uses the [MovieLens 32M Dataset](https://grouplens.org/datasets/mov
 > F. Maxwell Harper and Joseph A. Konstan. 2015. The MovieLens Datasets: History and Context. ACM Transactions on Interactive Intelligent Systems (TiiS) 5, 4: 19:1–19:19. <https://doi.org/10.1145/2827872>
 
 ## Usage
-You will need to get your own API key from [OMDb](https://www.omdbapi.com/apikey.aspx), once that is done. Add your API key as a system environment variable like this:
+You will need to get your own API key from [OMDb](https://www.omdbapi.com/apikey.aspx). After activating and receiving your key, add your API key as a system environment variable like this:
 - name: OMDB_API_KEY, value: {your api key} 
 
 ## Data Attribution

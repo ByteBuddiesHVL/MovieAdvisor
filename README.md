@@ -22,4 +22,4 @@ This project is licensed under the Creative Commons Attribution-NonCommercial 4.
 
 > Note: This project is intended solely for educational purposes and does not have any commercial intent.
 
-by: [williamsaether](@williamsaether) & [omegeland](@omegeland)
+by: [williamsaether](https://github.com/williamsaether) & [omegeland](https://github.com/omegeland)

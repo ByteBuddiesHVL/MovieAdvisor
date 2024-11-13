@@ -56,5 +56,28 @@ function generateMovies(movies) {
 
         container.appendChild(movieDiv);
     })
-
 }
+
+function toggleOverlay() {
+    const overlay = document.getElementById('wantedOverlay')
+    overlay.classList.toggle('active');
+}
+
+function toggleGenre(genreElement) {
+    const wantedContainer = document.getElementById('wantedContainer')
+    const wantedOverlay = document.getElementById('wantedOverlay')
+
+    if (wantedContainer.contains(genreElement)) {
+        wantedOverlay.appendChild(genreElement);
+    } else {
+        wantedContainer.appendChild(genreElement);
+    }
+}
+
+document.addEventListener('click', function(event) {
+    const wantedOverlay = document.getElementById('wantedOverlay');
+    const plusSymbol = document.getElementById('addWantedBtn');
+    if (!wantedOverlay.contains(event.target) && !plusSymbol.contains(event.target)) {
+        wantedOverlay.classList.remove('active')
+    }
+})

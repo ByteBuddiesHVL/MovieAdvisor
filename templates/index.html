@@ -19,16 +19,31 @@
     <div class="container inputContainer">
         <div>
             <div class="genreContainer">
-                <h3 class="genreTitle">Genres:</h3>
+                <h3 class="genreTitle">These genres:</h3>
                 <div class="genreSelect">
-                    <button class="genreButton">Action</button>
-                    <button class="genreButton">War</button>
-                    <button class="genreButton">Thriller</button>
+                    <div class="genreActiveContainer" id="wantedContainer">
+                        <span class="genreButton" onclick="toggleGenre(this)">Action</span>
+                        <span class="genreButton" onclick="toggleGenre(this)">War</span>
+                        <span class="genreButton" onclick="toggleGenre(this)">Thriller</span>
+                    </div>
+
+                    <div class="genreRestContainer">
+                        <span class="addGenreBtn" id="addWantedBtn" onclick="toggleOverlay()">+</span>
+
+                        <div class="genreOverlay" id="wantedOverlay">
+                            <span class="genreButton" onclick="toggleGenre(this)">Comedy</span>
+                            <span class="genreButton" onclick="toggleGenre(this)">Drama</span>
+                            <span class="genreButton" onclick="toggleGenre(this)">Sci-Fi</span>
+                            <span class="genreButton" onclick="toggleGenre(this)">Horror</span>
+                            <span class="genreButton" onclick="toggleGenre(this)">Fantasy</span>
+                        </div>
+                    </div>
                 </div>
                 <br>
-                <h3 class="genreTitle">But not these genres:</h3>
-                <div class="genreSelect">
-                    <button class="genreButton">Fantasy</button>
+                <h3 class="genreTitle">But not these:</h3>
+                <div class="genreSelect" id="unwantedContainer">
+                    <span class="genreButton">Fantasy</span>
+                    <span class="addGenreBtn" id="unwantedBtn">+</span>
                 </div>
             </div>
         </div>

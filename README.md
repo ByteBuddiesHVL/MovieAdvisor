@@ -21,3 +21,5 @@ This project uses data from the [OMDb API](https://www.omdbapi.com/), which is l
 This project is licensed under the Creative Commons Attribution-NonCommercial 4.0 International License. For more details, see the [LICENSE](LICENSE) file.
 
 > Note: This project is intended solely for educational purposes and does not have any commercial intent.
+
+by: [williamsaether](https://github.com/williamsaether) & [omegeland](https://github.com/omegeland)

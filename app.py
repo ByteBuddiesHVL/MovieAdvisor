@@ -24,8 +24,8 @@ try :
     model_file_key = 'model_31-10-24.pkl'
     movies_file_key = 'movies.csv'
 
-    local_model_path = './tmp/model.pkl'
-    local_movies_path = './tmp/movies.csv'
+    local_model_path = os.path.join('.','tmp','model.pkl')
+    local_movies_path = os.path.join('.','tmp','movies.csv')
 
     os.makedirs(os.path.dirname(local_model_path), exist_ok=True)
     os.makedirs(os.path.dirname(local_movies_path), exist_ok=True)
@@ -33,10 +33,21 @@ try :
     s3_client.download_file(bucket_name, model_file_key, local_model_path)
     s3_client.download_file(bucket_name, movies_file_key, local_movies_path)
 
+    if os.path.exists(local_model_path):
+        print("Model file downloaded successfully.")
+    else:
+        print("Model file NOT found.")
+
+    if os.path.exists(local_movies_path):
+        print("Movies file downloaded successfully.")
+    else:
+        print("Movies file NOT found.")
+
     with open(local_model_path, 'rb') as f:
         model = pickle.load(f)
 
     movies = pd.read_csv(local_movies_path)
+    print(movies.head())
 
     print("Model and Movies loaded successfully.")
 

@@ -25,7 +25,7 @@ try :
     movies_file_key = 'movies.csv'
 
     local_model_path = './tmp/model.pkl'
-    local_movies_path = './tmp/model.csv'
+    local_movies_path = './tmp/movies.csv'
 
     os.makedirs(os.path.dirname(local_model_path), exist_ok=True)
     os.makedirs(os.path.dirname(local_movies_path), exist_ok=True)

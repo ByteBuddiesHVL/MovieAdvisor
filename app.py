@@ -4,20 +4,41 @@ import pickle
 import pandas as pd
 from dotenv import load_dotenv
 import os
+import boto3
 
 app = Flask(__name__)
 
 load_dotenv()
 OMDB_API_KEY = os.getenv("OMDB_API_KEY")
 
-with open("model_31-10-24.pkl", "rb") as file:
-    model = pickle.load(file)
+def load_model_from_s3():
+    s3_client = boto3.client(
+        "s3",
+        aws_access_key_id=os.getenv("AWS_ACCESS_KEY_ID"),
+        aws_secret_access_key=os.getenv("AWS_SECRET_ACCESS_KEY"),
+        region_name=os.getenv("AWS_REGION")
+    )
+
+    bucket_name = os.getenv("S3_BUCKET")
+    model_file_key = 'model_31-10-24.pkl'
+
+    local_model_path = './tmp/model.pkl'
+    os.makedirs(os.path.dirname(local_model_path), exist_ok=True)
+    s3_client.download_file(bucket_name, model_file_key, local_model_path)
+
+    with open(local_model_path, 'rb') as f:
+        s3_model = pickle.load(f)
+
+    return s3_model
+
+try:
+    model = load_model_from_s3()
+    print("Model loaded successfully.")
+except Exception as e:
+    print(f"Error loading model: {e}")
 
 movies = pd.read_csv('data/ml-32m/movies.csv', dtype={'movieId': 'int64', 'title': 'str', 'genres': 'str'})
-
-avail_genres = [
-    "Action","Adventure","Animation","Children's","Comedy","Crime","Documentary","Drama","Fantasy","Film-Noir","Horror","Musical","Mystery","Romance","Sci-Fi","Thriller","War","Western"
-]
+avail_genres = ["Action","Adventure","Animation","Children's","Comedy","Crime","Documentary","Drama","Fantasy","Film-Noir","Horror","Musical","Mystery","Romance","Sci-Fi","Thriller","War","Western"]
 
 @app.route('/')
 def homepage():

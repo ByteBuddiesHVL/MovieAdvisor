@@ -1,5 +1,6 @@
 function generateMovies(movies) {
     const container = document.getElementById('resultContainer')
+    container.innerHTML = ''
 
     let counter = 0;
     movies.forEach(movie => {
@@ -25,9 +26,21 @@ function generateMovies(movies) {
                     <p class="resGenres">${omdb.Genre}</p>
                 </div>
                 <div class="resConRight">
-                    <p class="resRating">IMDb: ${omdb.imdbRating}/10</p>
-                    <p class="resRating">Rotten Tomatoes: ${omdb.Ratings[1]?.Value}</p>
-                    <p class="resRating">Metacritic: ${omdb.Ratings[2]?.Value}</p>
+                    ${omdb.imdbRating !== undefined ?
+                    `<div class="resRatingS">
+                        <img class="resRatingImg" src="../static/images/imdb.webp" alt="IMDb">
+                        <p class="resRating">${omdb.imdbRating}/10</p>
+                    </div>` : ''}
+                    ${omdb.Ratings[2]?.Value !== undefined ?
+                    `<div class="resRatingS">
+                        <img class="resRatingImg" src="../static/images/metacritic.webp" alt="Metacritic">
+                        <p class="resRating">${omdb.Ratings[2]?.Value}</p>
+                    </div>` : ''}
+                    ${omdb.Ratings[1]?.Value !== undefined ?
+                    `<div class="resRatingS">
+                        <img class="resRatingImg" src="../static/images/rotten-tomatoes.webp" alt="Rotten Tomatoes">
+                        <p class="resRating">${omdb.Ratings[1]?.Value}</p>
+                    </div>` : ''}
                 </div>
             </div>
         ` : `
@@ -35,21 +48,25 @@ function generateMovies(movies) {
             <div class="resContent">
                 <div class="resConLeft">
                     <h1 class="resTitle">${omdb.Title}</h1>
-                    <p class="resShortDesc">${omdb.Genre}  -  ${omdb.Year} • ${omdb.Rated} • ${duration}</p>
+                    <p class="resShortDesc">${omdb.Year} • ${omdb.Rated} • ${duration}</p>
+                    <p class="resGenres">${omdb.Genre}</p>
                 </div>
                 <div class="resConRight resConRightS">
-                    <div class="resRatingS">
-                        <img class="resRatingImg" src="../static/images/imdb.webp" alt="IMDb">
-                        <p class="resRating">${omdb.imdbRating}/10</p>
-                    </div>
-                    <div class="resRatingS">
+                    ${omdb.Ratings[1]?.Value !== undefined ?
+                    `<div class="resRatingS">
                         <img class="resRatingImg" src="../static/images/rotten-tomatoes.webp" alt="Rotten Tomatoes">
                         <p class="resRating">${omdb.Ratings[1]?.Value}</p>
-                    </div>
-                    <div class="resRatingS">
+                    </div>` : ''}
+                    ${omdb.Ratings[2]?.Value !== undefined ?
+                    `<div class="resRatingS">
                         <img class="resRatingImg" src="../static/images/metacritic.webp" alt="Metacritic">
                         <p class="resRating">${omdb.Ratings[2]?.Value}</p>
-                    </div>
+                    </div>` : ''}
+                    ${omdb.imdbRating !== undefined ?
+                    `<div class="resRatingS">
+                        <img class="resRatingImg" src="../static/images/imdb.webp" alt="IMDb">
+                        <p class="resRating">${omdb.imdbRating}/10</p>
+                    </div>` : ''}
                 </div>
             </div>
         `;
@@ -57,27 +74,3 @@ function generateMovies(movies) {
         container.appendChild(movieDiv);
     })
 }
-
-function toggleOverlay() {
-    const overlay = document.getElementById('wantedOverlay')
-    overlay.classList.toggle('active');
-}
-
-function toggleGenre(genreElement) {
-    const wantedContainer = document.getElementById('wantedContainer')
-    const wantedOverlay = document.getElementById('wantedOverlay')
-
-    if (wantedContainer.contains(genreElement)) {
-        wantedOverlay.appendChild(genreElement);
-    } else {
-        wantedContainer.appendChild(genreElement);
-    }
-}
-
-document.addEventListener('click', function(event) {
-    const wantedOverlay = document.getElementById('wantedOverlay');
-    const plusSymbol = document.getElementById('addWantedBtn');
-    if (!wantedOverlay.contains(event.target) && !plusSymbol.contains(event.target)) {
-        wantedOverlay.classList.remove('active')
-    }
-})

@@ -11,8 +11,20 @@ getLinks().then()
 document.getElementById('form').addEventListener('submit', function(e) {
     e.preventDefault();
 
-    const wanted = document.getElementById('wanted').value;
-    const unwanted = document.getElementById('unwanted').value;
+    let wanted =  []
+    let unwanted = []
+
+    const wantedC = wContainer.children
+    const unwantedC = uwContainer.children
+
+    for (let i = 0; i < wantedC.length; i++) {
+        if (availGenres.includes(wantedC[i].textContent))
+            wanted.push(wantedC[i].textContent);
+    }
+    for (let i = 0; i < unwantedC.length; i++) {
+        if (availGenres.includes(unwantedC[i].textContent))
+            unwanted.push(unwantedC[i].textContent);
+    }
 
     fetch('/process', {
         method: 'POST',

@@ -15,6 +15,10 @@ with open("model_31-10-24.pkl", "rb") as file:
 
 movies = pd.read_csv('data/ml-32m/movies.csv', dtype={'movieId': 'int64', 'title': 'str', 'genres': 'str'})
 
+avail_genres = [
+    "Action","Adventure","Animation","Children's","Comedy","Crime","Documentary","Drama","Fantasy","Film-Noir","Horror","Musical","Mystery","Romance","Sci-Fi","Thriller","War","Western"
+]
+
 @app.route('/')
 def homepage():
     return render_template('index.html')
@@ -26,13 +30,13 @@ def process():
 
         wanted = data.get('wanted')
         unwanted = data.get('unwanted')
-        # CHECK IF PART OF ACTUAL GENRES
 
-        wanted_genres = wanted.split(',')
-        unwanted_genres = unwanted.split(',')
+        matches = all(any(s1 in s2 for s2 in avail_genres) for s1 in wanted) & all(any(s1 in s2 for s2 in avail_genres) for s1 in unwanted)
+        if not matches:
+            return jsonify({'error': 'Unknown genres'})
 
-        if wanted_genres and unwanted_genres:
-            result = process_data(wanted_genres, unwanted_genres).tolist()
+        if wanted is not None and unwanted is not None:
+            result = process_data(wanted, unwanted).tolist()
             return jsonify({'result': result})
 
     return jsonify({'error': 'Error occurred!'})
@@ -40,17 +44,15 @@ def process():
 def process_data(wanted, unwanted):
     min_genre_match = 3
 
-    print(wanted,unwanted)
-
     def genre_match(row, genres):
         movie_genres = set(row.split('|'))
         return len(movie_genres.intersection(genres)) >= (
             min_genre_match if len(genres) >= min_genre_match else len(genres))
 
-    filtered_movies = movies[
-        movies['genres'].apply(lambda x: genre_match(x, wanted)) &
-        ~movies['genres'].str.contains('|'.join(unwanted))
-        ]
+    wanted_condition = True if len(wanted) == 0 else movies['genres'].apply(lambda x: genre_match(x, wanted))
+    unwanted_condition = True if len(unwanted) == 0 else ~movies['genres'].str.contains('|'.join(unwanted))
+
+    filtered_movies = movies[wanted_condition & unwanted_condition]
 
     recommended_movies = []
     for movie_id in filtered_movies['movieId'].values:
@@ -62,7 +64,6 @@ def process_data(wanted, unwanted):
     top_recommendations = filtered_movies[
         filtered_movies['movieId'].isin([x[0] for x in recommended_movies[:10]])]
 
-    print(top_recommendations)
 
     return top_recommendations.to_numpy()
 

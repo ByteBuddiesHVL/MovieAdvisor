@@ -7,6 +7,7 @@
     <link href="../static/css/style.css" rel="stylesheet">
     <script src="../static/js/fetch.js" defer></script>
     <script src="../static/js/update.js" defer></script>
+    <script src="../static/js/genres.js" defer></script>
 </head>
 <body>
     <header>
@@ -21,39 +22,32 @@
             <div class="genreContainer">
                 <h3 class="genreTitle">These genres:</h3>
                 <div class="genreSelect">
-                    <div class="genreActiveContainer" id="wantedContainer">
-                        <span class="genreButton" onclick="toggleGenre(this)">Action</span>
-                        <span class="genreButton" onclick="toggleGenre(this)">War</span>
-                        <span class="genreButton" onclick="toggleGenre(this)">Thriller</span>
-                    </div>
+                    <div class="genreActiveContainer" id="wantedContainer"></div>
 
                     <div class="genreRestContainer">
                         <span class="addGenreBtn" id="addWantedBtn" onclick="toggleOverlay()">+</span>
 
-                        <div class="genreOverlay" id="wantedOverlay">
-                            <span class="genreButton" onclick="toggleGenre(this)">Comedy</span>
-                            <span class="genreButton" onclick="toggleGenre(this)">Drama</span>
-                            <span class="genreButton" onclick="toggleGenre(this)">Sci-Fi</span>
-                            <span class="genreButton" onclick="toggleGenre(this)">Horror</span>
-                            <span class="genreButton" onclick="toggleGenre(this)">Fantasy</span>
-                        </div>
+                        <div class="genreOverlay" id="wantedOverlay"></div>
                     </div>
                 </div>
                 <br>
                 <h3 class="genreTitle">But not these:</h3>
-                <div class="genreSelect" id="unwantedContainer">
-                    <span class="genreButton">Fantasy</span>
-                    <span class="addGenreBtn" id="unwantedBtn">+</span>
+                <div class="genreSelect">
+                    <div class="genreActiveContainer" id="unwantedContainer"></div>
+
+                    <div class="genreRestContainer">
+                        <span class="addGenreBtn" id="addUnwantedBtn" onclick="toggleUOverlay()">+</span>
+
+                        <div class="genreOverlay" id="unwantedOverlay"></div>
+                    </div>
                 </div>
             </div>
-        </div>
-        <form id="form">
-            <input hidden id="wanted" name="wanted" value="Action,Drama,Thriller,Comedy">
-            <input hidden id="unwanted" name="unwanted" value="Fantasy">
             {{ error }}
-            <button type="submit">Find Movies</button>
-        </form>
+        </div>
     </div>
+    <form class="container formContainer" id="form">
+        <button class="formButton" type="submit">Find Movies</button>
+    </form>
     <div class="hidden container resultContainer" id="resultContainer"></div>
 </body>
 </html>

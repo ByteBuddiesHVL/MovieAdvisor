@@ -25,7 +25,7 @@ try :
     movies_file_key = 'movies.csv'
 
     local_model_path = './tmp/model.pkl'
-    local_movies_path = './tmp/model.pkl'
+    local_movies_path = './tmp/model.csv'
 
     os.makedirs(os.path.dirname(local_model_path), exist_ok=True)
     os.makedirs(os.path.dirname(local_movies_path), exist_ok=True)
@@ -36,10 +36,9 @@ try :
     with open(local_model_path, 'rb') as f:
         model = pickle.load(f)
 
-    with open(local_movies_path, 'rb') as f:
-        movies = pickle.load(f)
+    movies = pd.read_csv(local_movies_path)
 
-    print("Model loaded successfully.")
+    print("Model and Movies loaded successfully.")
 
 except Exception as e:
     print(f"Error loading model: {e}")

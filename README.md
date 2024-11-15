@@ -6,6 +6,7 @@ A Machine Learning project that provides personalized movie recommendations base
 
 ### Purpose
 Project for the DAT158 course at [Western Norway University of Applied Sciences](https://www.hvl.no/en/)
+- [Project Report](movieadvisor-report.pdf)
 
 ## Dataset
 This project uses the [MovieLens 32M Dataset](https://grouplens.org/datasets/movielens/32m/) for movie recommendations. The dataset was created by the GroupLens Research team at the University of Minnesota and contains over 32 million ratings and 2 million tags applied to nearly 88,000 movies.

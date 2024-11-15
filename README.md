@@ -1,6 +1,9 @@
 # MovieAdvisor🎬
 A Machine Learning project that provides personalized movie recommendations based on ratings and preferences.
 
+## DEMO
+[MovieAdvisor DEMO](https://github.com/user-attachments/assets/83d249e9-7942-41f1-8d3d-87d7052a1481)
+
 ### Purpose
 Project for the DAT158 course at [Western Norway University of Applied Sciences](https://www.hvl.no/en/)
 

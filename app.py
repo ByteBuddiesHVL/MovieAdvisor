@@ -21,7 +21,7 @@ try :
 
     BUCKET_NAME = os.getenv("S3_BUCKET")
 
-    model_file_key = 'model_31-10-24.pkl'
+    model_file_key = 'model.pkl'
     movies_file_key = 'movies.csv'
 
     local_model_path = os.path.join('.','tmp','model.pkl')

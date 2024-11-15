@@ -42,7 +42,7 @@ try :
 except Exception as e:
     print(f"Error loading model: {e}")
 
-avail_genres = ["Action","Adventure","Animation","Children's","Comedy","Crime","Documentary","Drama","Fantasy","Film-Noir","Horror","Musical","Mystery","Romance","Sci-Fi","Thriller","War","Western"]
+avail_genres = ["Action","Adventure","Animation","Children","Comedy","Crime","Documentary","Drama","Fantasy","Film-Noir","Horror","Musical","Mystery","Romance","Sci-Fi","Thriller","War","Western"]
 
 @app.route('/')
 def homepage():
@@ -69,13 +69,10 @@ def process():
 def process_data(wanted, unwanted):
     min_genre_match = 3
 
-    def genre_match(row, genres):
-        movie_genres = set(row.split('|'))
-        return len(movie_genres.intersection(genres)) >= (
-            min_genre_match if len(genres) >= min_genre_match else len(genres))
-
-    wanted_condition = True if len(wanted) == 0 else movies['genres'].apply(lambda x: genre_match(x, wanted))
-    unwanted_condition = True if len(unwanted) == 0 else ~movies['genres'].str.contains('|'.join(unwanted))
+    wanted_condition = True if len(wanted) == 0 else movies['genres'].apply(
+        lambda x: len(set(x.split('|')).intersection(wanted)) >= min(len(wanted),min_genre_match))
+    unwanted_condition = True if len(unwanted) == 0 else movies['genres'].apply(
+        lambda x: not any(genre in x.split('|') for genre in unwanted))
 
     filtered_movies = movies[wanted_condition & unwanted_condition]
 

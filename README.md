@@ -18,13 +18,13 @@ More info about the dataset in [data/README.md](data/README.md)
 
 ## Usage
 You will need to get your own API key from [OMDb](https://www.omdbapi.com/apikey.aspx). After activating and receiving your key, create a `.env` file in the root directory, and add the API as follows:
-- OMDB_API_KEY={`API-key`}
+- OMDB_API_KEY=`API-key`
 
 The `app.py` file retrieves the uploaded `model.pkl` file and `movies.csv` file from an AWS S3 bucket. You can either load these files locally, or you will have to use your own AWS S3 bucket and an IAM user with the necessary permissions to access the bucket. You will then need to add these lines to your `.env` file, if you wish to use AWS S3:
-- S3_BUCKET={`s3 bucket name, e.g., movieadvisorbucket`}
-- AWS_REGION={`aws region, e.g., eu-north-1`}
-- AWS_ACCESS_KEY_ID={`access key ID for your IAM user`}
-- AWS_SECRET_ACCESS_KEY={`secret access key for your IAM user`}
+- S3_BUCKET=`s3 bucket name, e.g., movieadvisorbucket`
+- AWS_REGION=`aws region, e.g., eu-north-1`
+- AWS_ACCESS_KEY_ID=`access key ID for your IAM user`
+- AWS_SECRET_ACCESS_KEY=`secret access key for your IAM user`
 
 ## Data Attribution
 This project uses data from the [OMDb API](https://www.omdbapi.com/), which is licensed under the [CC BY-NC 4.0 license](https://creativecommons.org/licenses/by-nc/4.0/). Data from OMDB API is used strictly for non-commercial purposes.

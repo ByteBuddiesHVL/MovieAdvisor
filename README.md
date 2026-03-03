@@ -34,4 +34,8 @@ This project is licensed under the Creative Commons Attribution-NonCommercial 4.
 
 > Note: This project is intended solely for educational purposes and does not have any commercial intent.
 
-by: [williamsaether](https://github.com/williamsaether) & [omegeland](https://github.com/omegeland)
+## Contributers
+By: [williamsaether](https://github.com/williamsaether) & [omegeland](https://github.com/omegeland)
+
+This project was developed using pair programming. 
+We worked together on a single machine throughout most of the development process, which means the commit history does not fully reflect each individual’s contribution.
